@@ -2,7 +2,6 @@ export const strings = {
   fr: {
     skip: "Aller au catalogue",
     "nav.catalog": "Catalogue",
-    "nav.pdf": "Télécharger le PDF",
     "hero.tagline": "Le catalogue jouets 2026–2027",
     "hero.cta": "Voir le catalogue",
     "catalog.title": "Catalogue",
@@ -20,7 +19,6 @@ export const strings = {
   en: {
     skip: "Skip to catalogue",
     "nav.catalog": "Catalogue",
-    "nav.pdf": "Download PDF",
     "hero.tagline": "The 2026–2027 toy catalogue",
     "hero.cta": "View catalogue",
     "catalog.title": "Catalogue",
