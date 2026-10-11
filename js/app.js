@@ -1,7 +1,7 @@
 import { t, applyStaticI18n } from "./i18n.js";
 
 const state = {
-  locale: "fr",
+  locale: "en",
   config: null,
   catalog: null,
   category: "all",
@@ -18,10 +18,8 @@ const els = {
   detailTitle: document.getElementById("detail-title"),
   detailDesc: document.getElementById("detail-desc"),
   detailMeta: document.getElementById("detail-meta"),
-  detailWhatsapp: document.getElementById("detail-whatsapp"),
   detailEmail: document.getElementById("detail-email"),
-  contactWhatsapp: document.getElementById("contact-whatsapp"),
-  contactEmail: document.getElementById("contact-email"),
+  headerEmail: document.getElementById("header-email"),
   langBtns: document.querySelectorAll(".lang-btn"),
 };
 
@@ -31,18 +29,6 @@ function localized(field) {
   return field[state.locale] || field.fr || field.en || "";
 }
 
-function whatsappDigits(raw) {
-  return String(raw || "").replace(/\D/g, "");
-}
-
-function whatsappUrl(message) {
-  const phone = whatsappDigits(state.config?.contact?.whatsapp);
-  const text = encodeURIComponent(message);
-  return phone
-    ? `https://wa.me/${phone}?text=${text}`
-    : `https://wa.me/?text=${text}`;
-}
-
 function mailtoUrl(subject, body) {
   const email = state.config?.contact?.email || "";
   return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -50,7 +36,7 @@ function mailtoUrl(subject, body) {
 
 function setLocale(locale) {
   state.locale = locale === "en" ? "en" : "fr";
-  localStorage.setItem("hoballah-locale", state.locale);
+  localStorage.setItem("hoballah-locale-v2", state.locale);
   applyStaticI18n(state.locale);
   els.langBtns.forEach((btn) => {
     const active = btn.dataset.lang === state.locale;
@@ -67,12 +53,12 @@ function setLocale(locale) {
 }
 
 function updateContactLinks() {
+  if (!els.headerEmail) return;
   const greet =
     state.locale === "fr"
       ? "Bonjour, je souhaite des informations sur le catalogue HoballaH jouets."
       : "Hello, I’d like information about the HoballaH jouets catalogue.";
-  els.contactWhatsapp.href = whatsappUrl(greet);
-  els.contactEmail.href = mailtoUrl(
+  els.headerEmail.href = mailtoUrl(
     state.locale === "fr" ? "Demande catalogue HoballaH jouets" : "HoballaH jouets catalogue inquiry",
     greet
   );
@@ -176,10 +162,8 @@ function fillDetail(product) {
   metaParts.push(`n° ${product.number}`);
   els.detailMeta.textContent = metaParts.join(" · ");
 
-  const waMsg = t(state.locale, "inquire.whatsapp", { name, number: product.number });
   const subject = t(state.locale, "inquire.emailSubject", { name, number: product.number });
   const body = t(state.locale, "inquire.emailBody", { name, number: product.number });
-  els.detailWhatsapp.href = whatsappUrl(waMsg);
   els.detailEmail.href = mailtoUrl(subject, body);
 }
 
@@ -241,7 +225,7 @@ async function loadJson(path) {
 }
 
 async function init() {
-  const saved = localStorage.getItem("hoballah-locale");
+  const saved = localStorage.getItem("hoballah-locale-v2");
   const [config, catalog] = await Promise.all([
     loadJson("data/config.json"),
     loadJson("data/products.json"),
@@ -250,6 +234,21 @@ async function init() {
   state.config = config;
   state.catalog = catalog;
   state.locale = saved || config.defaultLocale || "fr";
+
+  const addressEl = document.getElementById("footer-address");
+  if (addressEl && config.contact?.address) {
+    addressEl.textContent = config.contact.address;
+  }
+
+  const phonesEl = document.getElementById("footer-phones");
+  if (phonesEl && Array.isArray(config.contact?.phones)) {
+    phonesEl.innerHTML = config.contact.phones
+      .map((phone) => {
+        const tel = String(phone).replace(/\D/g, "");
+        return `<a href="tel:+${tel}">${phone}</a>`;
+      })
+      .join("");
+  }
 
   bindEvents();
   setLocale(state.locale);

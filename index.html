@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,7 +14,7 @@
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png" sizes="180x180" />
 </head>
 <body>
-  <a class="skip-link" href="#catalogue" data-i18n="skip">Aller au catalogue</a>
+  <a class="skip-link" href="#catalogue" data-i18n="skip">Skip to catalogue</a>
 
   <header class="site-header" id="top">
     <div class="header-inner">
@@ -23,7 +23,6 @@
       </a>
       <nav class="header-nav" aria-label="Primary">
         <a href="#catalogue" data-i18n="nav.catalog">Catalogue</a>
-        <a href="#contact" data-i18n="nav.contact">Contact</a>
       </nav>
       <div class="header-actions">
         <a
@@ -31,10 +30,11 @@
           href="docs/catalog-2026-2027.pdf"
           download="HoballaH-jouets-catalogue-2026-2027.pdf"
           data-i18n="nav.pdf"
-        >Télécharger le PDF</a>
+        >Download PDF</a>
+        <a class="header-email" id="header-email" href="mailto:Nagi@arc.sn" data-i18n="contact.email">Email</a>
         <div class="lang-toggle" role="group" aria-label="Language">
-          <button type="button" class="lang-btn is-active" data-lang="fr" aria-pressed="true">FR</button>
-          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+          <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
         </div>
       </div>
     </div>
@@ -43,20 +43,20 @@
   <main>
     <section class="hero" aria-labelledby="hero-brand">
       <div class="hero-media" aria-hidden="true">
-        <img src="images/hero.jpg" alt="" class="hero-image" />
+        <img src="images/hero-atmosphere.jpg" alt="" class="hero-image" />
       </div>
       <div class="hero-content">
-        <img src="images/logo.png?v=7" alt="" class="hero-logo" width="320" height="196" />
+        <img src="images/logo.png?v=7" alt="HoballaH jouets" class="hero-logo" width="320" height="196" />
         <h1 id="hero-brand" class="visually-hidden">HoballaH jouets</h1>
-        <p class="hero-tagline" data-i18n="hero.tagline">Le catalogue jouets 2026–2027</p>
-        <a class="btn btn-primary" href="#catalogue" data-i18n="hero.cta">Voir le catalogue</a>
+        <p class="hero-tagline" data-i18n="hero.tagline">The 2026–2027 toy catalogue</p>
+        <a class="btn btn-primary" href="#catalogue" data-i18n="hero.cta">View catalogue</a>
       </div>
     </section>
 
     <section class="catalog" id="catalogue" aria-labelledby="catalog-title">
       <div class="section-intro">
         <h2 id="catalog-title" data-i18n="catalog.title">Catalogue</h2>
-        <p class="section-lede" data-i18n="catalog.lede">Parcourez nos jouets. Pour commander, écrivez-nous.</p>
+        <p class="section-lede" data-i18n="catalog.lede">Browse our toys. To order, get in touch.</p>
       </div>
 
       <div class="category-rail" id="category-rail" role="tablist" aria-label="Categories"></div>
@@ -65,23 +65,17 @@
 
       <div class="product-grid" id="product-grid"></div>
     </section>
-
-    <section class="contact" id="contact" aria-labelledby="contact-title">
-      <div class="contact-inner">
-        <h2 id="contact-title" data-i18n="contact.title">Nous contacter</h2>
-        <p class="section-lede" data-i18n="contact.lede">Pas de panier en ligne — écrivez-nous pour commander ou poser une question.</p>
-        <div class="contact-actions">
-          <a class="btn btn-primary" id="contact-whatsapp" href="#" target="_blank" rel="noopener noreferrer" data-i18n="contact.whatsapp">WhatsApp</a>
-          <a class="btn btn-ghost" id="contact-email" href="#" data-i18n="contact.email">E-mail</a>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">
     <div class="footer-inner">
       <img src="images/logo.png?v=7" alt="HoballaH jouets" class="footer-logo" width="130" height="80" />
-      <p class="footer-copy" data-i18n="footer.copy">© HoballaH jouets — Catalogue 2026–2027</p>
+      <p class="footer-address" id="footer-address">69 Rue de Raffenel, Angle Rue De Thiong, Dakar — Sénégal</p>
+      <div class="footer-phones" id="footer-phones">
+        <a href="tel:+221338214581">+221.33.821.45.81</a>
+        <a href="tel:+2218231979">+221.823.19.79</a>
+      </div>
+      <p class="footer-copy" data-i18n="footer.copy">© HoballaH jouets — 2026–2027 catalogue</p>
     </div>
   </footer>
 
@@ -99,8 +93,7 @@
         <h2 id="detail-title"></h2>
         <p class="detail-desc" id="detail-desc"></p>
         <div class="detail-actions">
-          <a class="btn btn-primary" id="detail-whatsapp" href="#" target="_blank" rel="noopener noreferrer" data-i18n="detail.whatsapp">Demander via WhatsApp</a>
-          <a class="btn btn-ghost" id="detail-email" href="#" data-i18n="detail.email">Demander par e-mail</a>
+          <a class="btn btn-primary" id="detail-email" href="mailto:Nagi@arc.sn" data-i18n="detail.email">Ask by email</a>
         </div>
       </div>
     </aside>

@@ -161,6 +161,29 @@ button {
   color: #fff;
 }
 
+.header-email {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: 999px;
+  background: var(--red);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 6px 16px rgba(227, 30, 36, 0.22);
+  transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.header-email:hover {
+  background: var(--red-deep);
+  transform: translateY(-1px);
+}
+
 .lang-toggle {
   display: inline-flex;
   border: 1px solid var(--line);
@@ -283,11 +306,10 @@ button {
 }
 
 /* Catalog */
-.catalog,
-.contact {
+.catalog {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 5.5rem 1.25rem 2rem;
+  padding: 3.5rem 1.25rem 2rem;
 }
 
 .section-intro {
@@ -295,8 +317,7 @@ button {
   margin-bottom: 2.5rem;
 }
 
-.section-intro h2,
-.contact h2 {
+.section-intro h2 {
   margin: 0 0 0.65rem;
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 3.5vw, 2.4rem);
@@ -410,25 +431,6 @@ button {
   color: var(--muted);
 }
 
-/* Contact */
-.contact {
-  padding-top: 4rem;
-  padding-bottom: 5rem;
-}
-
-.contact-inner {
-  padding: 3rem 0 0;
-  border-top: 1px solid var(--line);
-  max-width: 34rem;
-}
-
-.contact-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.75rem;
-}
-
 /* Footer */
 .site-footer {
   border-top: 1px solid var(--line);
@@ -450,6 +452,33 @@ button {
   height: auto;
   aspect-ratio: 1740 / 1067;
   object-fit: contain;
+}
+
+.footer-address {
+  margin: 0;
+  max-width: 22rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.footer-phones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.footer-phones a {
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.2s var(--ease);
+}
+
+.footer-phones a:hover {
+  color: var(--red);
 }
 
 .footer-copy {
@@ -611,7 +640,6 @@ button {
   }
 
   .catalog,
-  .contact,
   .footer-inner {
     padding-inline: 2rem;
   }
@@ -621,6 +649,11 @@ button {
   .header-download {
     font-size: 0.72rem;
     padding: 0.3rem 0.65rem;
+  }
+
+  .header-email {
+    font-size: 0.72rem;
+    padding: 0.3rem 0.75rem;
   }
 }
 
@@ -634,7 +667,7 @@ button {
   }
 
   .header-download {
-    max-width: 7.5rem;
+    max-width: 6.5rem;
     white-space: normal;
     text-align: center;
     line-height: 1.15;
