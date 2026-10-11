@@ -333,12 +333,10 @@ button {
 
 .category-rail {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  overflow-x: auto;
   padding: 0.25rem 0 1.25rem;
   margin-bottom: 0.5rem;
-  scrollbar-width: thin;
-  -webkit-overflow-scrolling: touch;
 }
 
 .category-chip {
