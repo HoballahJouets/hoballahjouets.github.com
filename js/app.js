@@ -164,7 +164,9 @@ function fillDetail(product) {
 
   const subject = t(state.locale, "inquire.emailSubject", { name, number: product.number });
   const body = t(state.locale, "inquire.emailBody", { name, number: product.number });
-  els.detailEmail.href = mailtoUrl(subject, body);
+  if (els.detailEmail) {
+    els.detailEmail.href = mailtoUrl(subject, body);
+  }
 }
 
 function openDetail(id, updateHash = true) {
